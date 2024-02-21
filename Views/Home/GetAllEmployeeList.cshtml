@@ -1,0 +1,58 @@
+﻿@model IEnumerable<EmployeeManagementModel.EmployeeModel>
+
+@{
+    ViewBag.Title = "GetAllEmployeeList";
+}
+
+<h2>GetAllEmployeeList</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.EmployeeID))
+{
+    <div class="alert alert-success" role="alert">
+        Data Added
+    </div>
+}
+
+<p>
+    @Html.ActionLink("Add New Employee", "AddEmployee")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HireDate)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeID)
+            </td>
+            <td>
+                @Html.ActionLink(item.FullName, "EmployeeDetails", new { id = item.EmployeeID })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HireDate)
+            </td>
+        </tr>
+    }
+</table>

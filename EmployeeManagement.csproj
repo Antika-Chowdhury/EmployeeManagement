@@ -133,6 +133,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SalaryModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -184,6 +185,8 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\AddEmployee.cshtml" />
+    <Content Include="Views\Home\GetAllEmployeeList.cshtml" />
+    <Content Include="Views\Home\EmployeeDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -220,13 +223,13 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EmployeeDatabase\EmployeeDatabase.csproj">
-      <Project>{2d9d9e3f-8cde-4733-923c-abaa071cd4e0}</Project>
-      <Name>EmployeeDatabase</Name>
-    </ProjectReference>
     <ProjectReference Include="..\EmployeeManagementModel\EmployeeManagementModel.csproj">
       <Project>{0bad6c04-759b-4fed-aa00-8c0ca5955e98}</Project>
       <Name>EmployeeManagementModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EmployeeTestDatabase\EmployeeTestDatabase.csproj">
+      <Project>{21d7c5ef-bf2b-4fc0-8bf5-5f60dd31585e}</Project>
+      <Name>EmployeeTestDatabase</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

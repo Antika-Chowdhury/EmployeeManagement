@@ -1,35 +1,30 @@
 ﻿using System;
 using System.Web.Mvc;
-using EmployeeDatabase;
+using EmployeeTestDatabase;
 using EmployeeManagementModel;
-using EmployeeDatabase.DbOperations;
+using EmployeeTestDatabase.DbOperations;
 
 namespace EmployeeManagement.Controllers
 {
     public class HomeController : Controller
     {
-        EmployeeRepository repository = null;
+        EmployeeRepo repository = null;
 
         public HomeController()
         {
-            repository = new EmployeeRepository();
+            repository = new EmployeeRepo();
         }
 
         // GET: Home/AddEmployee
         public ActionResult AddEmployee()
         {
-            var viewEmployeeSalaryModel = new EmployeeSalaryModel()
-            {
-                Employee = new EmployeeModel(),
-                Salary = new SalaryModel()
-            };
 
-            return View(viewEmployeeSalaryModel);
+            return View();
         }
 
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult AddEmployee(EmployeeSalaryModel model)
+        public ActionResult AddEmployee(EmployeeModel model)
         {
             if(ModelState.IsValid)
             {
@@ -37,15 +32,33 @@ namespace EmployeeManagement.Controllers
                 if(id>0)
                 {
                     ModelState.Clear();
+                    ViewBag.EmployeeID = id;
                 }
             }
-            return View(model);
+            return RedirectToAction("GetAllEmployeeList");
         }
 
         public ActionResult GetAllEmployeeList()
         {
             var result = repository.GetEmployeeList();
             return View(result);
+        }
+
+        public ActionResult EmployeeDetails(int id)
+        {
+            var employeeDetail = repository.GetEmployeeDetails(id);
+            return View(employeeDetail);
+        }
+
+        [HttpPost]
+        public ActionResult EmployeeDetails(EmployeeModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                repository.UpdateEmployee(model.EmployeeID, model);
+                return RedirectToAction("GetAllEmployeeList");
+            }
+            return View();
         }
 
 
