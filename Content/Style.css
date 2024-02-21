@@ -1,0 +1,46 @@
+﻿.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-horizontal .control-label {
+    text-align: right;
+}
+
+.input-box {
+    display: block;
+    margin-left: 10px;
+
+}
+
+.form-group {
+    padding: 10px 0; /* Add padding to form groups */
+}
+
+/* style.css */
+
+.btn.btn-primary {
+    /* Primary button styles */
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+    .btn.btn-primary:hover,
+    .btn.btn-primary:focus,
+    .btn.btn-primary:active,
+    .btn.btn-primary.active,
+    .open .dropdown-toggle.btn.btn-primary {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
