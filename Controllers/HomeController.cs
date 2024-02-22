@@ -23,20 +23,42 @@ namespace EmployeeManagement.Controllers
         }
 
 
+        //[HttpPost]
+        //public ActionResult AddEmployee(EmployeeModel model)
+        //{
+        //    if(ModelState.IsValid)
+        //    {
+        //      int id =  repository.AddEmployee(model);
+        //        if(id>0)
+        //        {
+        //            ModelState.Clear();
+        //            ViewBag.EmployeeID = id;
+        //        }
+        //    }
+        //    return RedirectToAction("GetAllEmployeeList");
+        //}
+
         [HttpPost]
+
         public ActionResult AddEmployee(EmployeeModel model)
         {
-            if(ModelState.IsValid)
+            bool isEmailExist;
+            int id = repository.AddEmployee(model, model.Email, out isEmailExist);
+            if (id > 0)
             {
-              int id =  repository.AddEmployee(model);
-                if(id>0)
-                {
-                    ModelState.Clear();
-                    ViewBag.EmployeeID = id;
-                }
+                // Employee added successfully
+                ModelState.Clear();
+                ViewBag.EmployeeID = id;
             }
+            else if (isEmailExist)
+            {
+                // Email already exists, handle error message
+                ModelState.AddModelError(string.Empty, "Email already exists.");
+            }
+
             return RedirectToAction("GetAllEmployeeList");
         }
+
 
         public ActionResult GetAllEmployeeList()
         {
@@ -49,9 +71,16 @@ namespace EmployeeManagement.Controllers
             var employeeDetail = repository.GetEmployeeDetails(id);
             return View(employeeDetail);
         }
+   
+
+        public ActionResult EmployeeUpdate(int id)
+        {
+            var employee = repository.GetEmployeeDetails(id);
+            return View(employee);
+        }
 
         [HttpPost]
-        public ActionResult EmployeeDetails(EmployeeModel model)
+        public ActionResult EmployeeUpdate(EmployeeModel model)
         {
             if (ModelState.IsValid)
             {
@@ -60,7 +89,6 @@ namespace EmployeeManagement.Controllers
             }
             return View();
         }
-
 
     }
 }

@@ -2,6 +2,36 @@
     max-width: 500px;
     margin: 0 auto;
 }
+/* Adjust the margin of the input boxes */
+.input-box {
+    margin-left: auto; /* Adjust margin as needed */
+}
+
+
+.employee-details-table {
+    display: table;
+    width: 100%;
+}
+
+.row {
+    display: table-row;
+}
+
+.label,
+.value {
+    display: table-cell;
+    padding: 5px 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.label {
+    font-weight: bold;
+    width: 30%;
+}
+
+.value {
+    width: 70%;
+}
 
 .form-horizontal .control-label {
     text-align: right;
@@ -10,14 +40,11 @@
 .input-box {
     display: block;
     margin-left: 10px;
-
 }
 
 .form-group {
     padding: 10px 0; /* Add padding to form groups */
 }
-
-/* style.css */
 
 .btn.btn-primary {
     /* Primary button styles */

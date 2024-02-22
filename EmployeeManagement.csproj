@@ -187,6 +187,7 @@
     <Content Include="Views\Home\AddEmployee.cshtml" />
     <Content Include="Views\Home\GetAllEmployeeList.cshtml" />
     <Content Include="Views\Home\EmployeeDetails.cshtml" />
+    <Content Include="Views\Home\EmployeeUpdate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
